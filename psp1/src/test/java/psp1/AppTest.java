@@ -14,15 +14,15 @@ public class AppTest {
     public void setUp() {
         locCounter = new Counter();
     }
+
     @Test
     public void testCountLOC() throws IOException {
-        File file = new File("/home/acacio/Desktop/EngenhariaDeSoftware2/psp0/src/main/java/psp0/App.java");
+        File file = new File("/home/acacio/Desktop/EngenhariaDeSoftware2/psp1/src/main/java/psp1");
         locCounter.countLOC(file);
 
-        assertEquals(37, locCounter.getClassLines());
-        assertEquals(0, locCounter.getClassCount());
-        assertEquals(2, locCounter.getMethodCount());
-        assertEquals(37, locCounter.getClassLines());
-        assertEquals(0, locCounter.getMethodLines());
+        assertEquals(117, locCounter.getClassLines());
+        assertEquals(2, locCounter.getClassCount());
+        assertEquals(10, locCounter.getMethodCount());
+        assertEquals(117, locCounter.getClassLines());
     }
 }
