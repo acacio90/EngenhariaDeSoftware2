@@ -12,20 +12,24 @@ public class App
         int[] locValues = {
             18, 18, 25, 31, 37, 82, 82, 87, 89, 230, 85, 87, 558
         };
-        int[] methodCounts = {
-            3, 3, 3, 3, 3, 5, 4, 4, 4, 10, 3, 3, 10
-        };
+
+        int[] methodCounts = {3, 3, 3, 3, 3, 5, 4, 4, 4, 10, 3, 3, 10};
 
         // Table 2: Data for page counts by chapter
         int[] pageCounts = {
             7, 12, 10, 12, 10, 12, 12, 12, 12, 8, 8, 8, 20, 14, 18, 12
         };
 
-        // Calculate size ranges for LOC
-        double[] locLogarithmicValues = new double[locValues.length];
+        double[] locPerMethodValues = new double[locValues.length];
         for (int i = 0; i < locValues.length; i++) {
-            locLogarithmicValues[i] = Math.log(locValues[i]);
+            locPerMethodValues[i] = locValues[i] / methodCounts[i];
         }
+
+        double[] locLogarithmicValues = new double[locPerMethodValues.length];
+        for (int i = 0; i < locPerMethodValues.length; i++) {
+            locLogarithmicValues[i] = Math.log(locPerMethodValues[i]);
+        }
+
         double locMean = StatisticsCalculator.calculateMean(locLogarithmicValues);
         double locVariance = StatisticsCalculator.calculateVariance(locLogarithmicValues, locMean);
         double locStandardDeviation = Math.sqrt(locVariance);
